@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body, #root {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+    background-color: #030712;
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(30, 58, 138, 0.25), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 120%, rgba(88, 28, 135, 0.2), transparent 70%),
+      radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.04) 1px, transparent 0);
+    background-size: 100% 100%, 100% 100%, 28px 28px;
+    background-attachment: fixed;
+    color: #f1f5f9;
+  }
+}
+
+/* Custom Sleek Hextech/Modern Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 170, 110, 0.8);
+}
+
+/* Smooth touch scrolling utility */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Enhanced mobile touch scrolling utilities */
+.mobile-scroll-y {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  touch-action: pan-y !important;
+}
+
+.mobile-scroll-x {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-x: contain !important;
+  touch-action: pan-x pan-y !important;
+}
+
+.mobile-modal-scroll {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  touch-action: pan-y !important;
+}
+
+/* === Flowing Text & Visual Effects Animations === */
+
+/* Continuous Holo Shimmer Scan over text */
+@keyframes textFlowShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Text glow enhancement without risky transparent text fill */
+.text-flow-shimmer {
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.4), 0 0 16px rgba(56, 189, 248, 0.2);
+  transition: text-shadow 0.3s ease;
+}
+
+.text-flow-gold {
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.45), 0 0 16px rgba(245, 158, 11, 0.2);
+}
+
+.text-flow-cyan {
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.45), 0 0 16px rgba(14, 165, 233, 0.2);
+}
+
+/* Staggered Wave Flow Entrance - Safe: defaults to opacity 1 so text never disappears */
+@keyframes waveFlowIn {
+  0% {
+    opacity: 0.7;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wave-flow-in-1 {
+  animation: waveFlowIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 1;
+}
+
+.wave-flow-in-2 {
+  animation: waveFlowIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 1;
+}
+
+.wave-flow-in-3 {
+  animation: waveFlowIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 1;
+}
+
+/* Smooth Marquee Horizontal Flow */
+@keyframes marqueeFlow {
+  0%, 15% {
+    transform: translateX(0%);
+  }
+  50%, 65% {
+    transform: translateX(calc(-100% + 140px));
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-flow {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marqueeFlow 8s ease-in-out infinite;
+}
+
+/* Adaptive Responsive Marquee Ping-Pong (Scrolls to reveal full text, then returns) */
+@keyframes marqueePingPong {
+  0%, 25% {
+    transform: translateX(0);
+  }
+  50%, 75% {
+    transform: translateX(calc(-1 * var(--marquee-overflow, 0px)));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-pingpong {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marqueePingPong var(--marquee-duration, 5s) cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+
+.animate-marquee-pingpong:hover {
+  animation-play-state: paused;
+}
+
+/* Moving Light Beam on Cooldown & Energy Bars */
+@keyframes energyBeamFlow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.energy-beam-flow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+  animation: energyBeamFlow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Glowing Border Pulse for Active Champions */
+@keyframes cyberBorderPulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.25), inset 0 0 8px rgba(56, 189, 248, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.5), inset 0 0 12px rgba(56, 189, 248, 0.25);
+  }
+}
+
+.cyber-glow-active {
+  animation: cyberBorderPulse 2.5s ease-in-out infinite;
+}
+
+/* Subtle Holo Grid Card Style */
+.cyber-glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.85) 0%,
+    rgba(30, 41, 59, 0.7) 100%
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+

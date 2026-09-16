@@ -1,0 +1,8 @@
+{
+  "name": "軍子來襲：球球衝擊競技場",
+  "description": "A 1v1 physics-based arena game where automated passive skills determine victory through tactical movement and high-speed collisions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
